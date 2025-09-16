@@ -39,7 +39,7 @@ public class Pizza {
     public String toString() {
         return "Pizza: size=" + size + ", crust=" + crust + ", cheese=" + cheese + ", extraCheese=" + extraCheese
                 + ", pepperoni=" + pepperoni + ", mushrooms=" + mushrooms + ", onions=" + onions + ", sausage="
-                + sausage + ", bacon=" + bacon + ", pineapple=" + pineapple + ", olives=" + olives + ", chicken="
+                + sausage + ", bacon=" + bacon + "\n" + " pineapple=" + pineapple + ", olives=" + olives + ", chicken="
                 + chicken + ", beef=" + beef + ", tomatoes=" + tomatoes + ", jalapenos=" + jalapenos + ", sauceType="
                 + sauceType;
     }
