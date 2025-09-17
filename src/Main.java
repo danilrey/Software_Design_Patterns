@@ -14,8 +14,8 @@ public class Main {
         btn.click();
 
         ThemeFactory autoTheme = new AutoThemeFactory();
-        Menu autoMenu = autoTheme.createMenu();
-        autoMenu.open();
+        Menu menu = autoTheme.createMenu();
+        menu.open();
 
 
     }
