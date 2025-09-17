@@ -1,5 +1,5 @@
 package Widget.Menu;
 
-public interface IMenu {
+public interface Menu {
     void open();
 }

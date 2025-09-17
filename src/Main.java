@@ -1,20 +1,20 @@
 import Theme.*;
-import Widget.Button.IButton;
-import Widget.Window.IWindow;
-import Widget.Menu.IMenu;
+import Widget.Button.Button;
+import Widget.Window.Window;
+import Widget.Menu.Menu;
 
 public class Main {
     public static void main(String[] args) {
-        IThemeFactory darkTheme = new DarkTheme();
-        IWindow window = darkTheme.createWindow();
+        ThemeFactory darkTheme = new DarkThemeFactory();
+        Window window = darkTheme.createWindow();
         window.show();
 
-        IThemeFactory lightTheme = new LightTheme();
-        IButton btn = lightTheme.createButton();
+        ThemeFactory lightTheme = new LightThemeFactory();
+        Button btn = lightTheme.createButton();
         btn.click();
 
-        IThemeFactory autoTheme = new AutoTheme();
-        IMenu autoMenu = autoTheme.createMenu();
+        ThemeFactory autoTheme = new AutoThemeFactory();
+        Menu autoMenu = autoTheme.createMenu();
         autoMenu.open();
 
 

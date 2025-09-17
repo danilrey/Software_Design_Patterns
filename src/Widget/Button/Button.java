@@ -1,5 +1,5 @@
 package Widget.Button;
 
-public interface IButton {
+public interface Button {
     void click();
 }

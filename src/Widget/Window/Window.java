@@ -1,5 +1,5 @@
 package Widget.Window;
 
-public interface IWindow {
+public interface Window {
     void show();
 }
