@@ -1,3 +1,5 @@
+package Name;
+
 import java.io.*;
 import java.util.*;
 
@@ -5,11 +7,12 @@ public class NameAdapter implements Name {
     private final String runner;
     private final String fileName;
 
-    private final String targetName = "DANILA";
+    private final String targetName;
     private final Map<Character, Integer> required = new HashMap<>();
     private final Map<Character, Integer> collected = new HashMap<>();
 
-    public NameAdapter(String runner, String fileName) {
+    public NameAdapter(String runner, String fileName, String name) {
+        targetName = name;
         this.runner = runner;
         this.fileName = fileName;
         for (char c : targetName.toCharArray()) {
@@ -49,6 +52,7 @@ public class NameAdapter implements Name {
                 process.destroy();
             }
         }
+        showCollected();
         return result;
     }
 
