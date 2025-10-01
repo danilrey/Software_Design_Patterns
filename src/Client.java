@@ -67,7 +67,8 @@ class Client {
             switch (choice) {
                 case 0:
                     game.exit();
-                    return;
+                    run();
+                    break;
                 case 1: game.volumeUp(); break;
                 case 2: game.volumeDown(); break;
                 case 3: game.build(); break;
