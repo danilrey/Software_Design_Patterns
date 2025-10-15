@@ -23,12 +23,14 @@ public class CreditCardPayment implements Payment {
     }
 
     @Override
-    public void pay(double sum) {
+    public boolean pay(double sum) {
         if (sum < 0 || amount < sum) {
-            System.out.println("We can't pay negative amount");
+            System.out.println("We can't pay this amount");
+            return false;
         } else {
             amount -= sum;
             System.out.println("Payed amount " + sum + " by card");
+            return true;
         }
     }
 }

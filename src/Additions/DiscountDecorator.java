@@ -10,9 +10,9 @@ public class DiscountDecorator extends MoneyAdditions{
     }
 
     @Override
-    public void pay(double amount) {
-        super.pay(discountAmount(amount));
+    public boolean pay(double amount) {
         System.out.println("Payment discount " + discount*100 + "%");
+        return super.pay(discountAmount(amount));
     }
 
     public void addDiscount() {

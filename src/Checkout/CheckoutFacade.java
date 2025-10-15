@@ -13,8 +13,7 @@ public class CheckoutFacade {
 
     public void doubleCashback(Payment payment, double amount) {
         CashbackDecorator cashback = new CashbackDecorator(payment);
-        cashback.pay(amount);
-        cashback.addCashback(amount);
+        cashback.addCashback(amount, cashback.pay(amount));
         System.out.println("Cashback applied two times");
     }
 
@@ -26,28 +25,38 @@ public class CheckoutFacade {
     }
 
     public void paySafelyWithDiscounts(Payment payment, double amount) {
-        DiscountDecorator discount = new DiscountDecorator(payment);
-        CashbackDecorator cashback = new CashbackDecorator(payment);
-        FraudDetectionDecorator detection = new FraudDetectionDecorator(payment);
-        amount = discount.discountAmount(amount);
-        cashback.addCashback(amount);
-        detection.pay(amount);
-    }
-
-    public void paySafelyWithDiscountsReceipt(Payment payment, double amount) {
         Receipt receipt = new Receipt();
         DiscountDecorator discount = new DiscountDecorator(payment);
         CashbackDecorator cashback = new CashbackDecorator(payment);
         FraudDetectionDecorator detection = new FraudDetectionDecorator(payment);
         amount = discount.discountAmount(amount);
-        cashback.addCashback(amount);
-        detection.pay(amount);
+        cashback.addCashback(amount, detection.pay(amount));
         receipt.takeReceipt(amount,payment);
+    }
+
+    public void paySafelyWithNotifier(Payment payment, double amount, String email) {
+        Notifier notifier = new Notifier(email);
+        DiscountDecorator discount = new DiscountDecorator(payment);
+        CashbackDecorator cashback = new CashbackDecorator(payment);
+        FraudDetectionDecorator detection = new FraudDetectionDecorator(payment);
+        amount = discount.discountAmount(amount);
+        cashback.addCashback(amount, detection.pay(amount));
+        notifier.sendMsg(amount);
     }
 
     public void addSafely(Payment payment, double amount) {
         FraudDetectionDecorator detection = new FraudDetectionDecorator(payment);
         detection.addMoney(amount);
+    }
+
+    public void processOrder(Payment payment, double amount, String email) {
+        Notifier notifier = new Notifier(email);
+        DiscountDecorator discount = new DiscountDecorator(payment);
+        CashbackDecorator cashback = new CashbackDecorator(payment);
+        FraudDetectionDecorator detection = new FraudDetectionDecorator(payment);
+        amount = discount.discountAmount(amount);
+        cashback.addCashback(amount, detection.pay(amount));
+        notifier.sendMsgWithReceipt(amount, payment);
     }
 
     public void checkSum(Payment payment) {

@@ -20,7 +20,7 @@ abstract class MoneyAdditions implements Payment {
     }
 
     @Override
-    public void pay(double amount) {
-        payment.pay(amount);
+    public boolean pay(double amount) {
+        return payment.pay(amount);
     }
 }

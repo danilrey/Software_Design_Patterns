@@ -9,12 +9,13 @@ public class FraudDetectionDecorator extends MoneyAdditions {
     }
 
     @Override
-    public void pay(double amount) {
+    public boolean pay(double amount) {
         if (amount > 100000) {
             System.out.println("Fraud behaviour detected, operation failed");
+            return false;
         } else {
             System.out.println("Fraud behaviour doesn't detected, operation succeeded");
-            super.pay(amount);
+            return super.pay(amount);
         }
     }
 

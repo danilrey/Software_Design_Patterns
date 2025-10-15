@@ -9,13 +9,18 @@ public class CashbackDecorator extends MoneyAdditions {
     }
 
     @Override
-    public void pay(double amount) {
-        super.pay(amount);
+    public boolean pay(double amount) {
         System.out.print("Cashback: ");
-        addCashback(amount);
+        return addCashback(amount, super.pay(amount));
     }
 
-    public void addCashback(double amount) {
-        super.addMoney(amount*0.03);
+    public boolean addCashback(double amount, boolean validation) {
+        if (validation) {
+            super.addMoney(amount*0.03);
+            return true;
+        } else {
+            System.out.println("Cashback could not be added");
+            return false;
+        }
     }
 }
