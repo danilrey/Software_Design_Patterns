@@ -27,9 +27,9 @@ public class Client {
         sizeCount.visitFile(file1);
         System.out.println("File " + file1.getName() + " size - " + sizeCount.getSize());
         treeLs.visitDirectory(dir1);
-        tarCompress.visitFile(file4);
-        zipCompress.visitFile(file5);
-        zipCompress.visitFile(file6);
+        file4.accept(tarCompress);
+        file5.accept(zipCompress);
+        file6.accept(zipCompress);
         sizeCount.visitDirectory(dir2);
         System.out.println("Directory " + dir2.getName() + " size - " + sizeCount.getSize());
         treeLs.visitDirectory(dir2);
